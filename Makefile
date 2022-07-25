@@ -1,2 +1,2 @@
 all:
-	gcc tic_tac_toe.c -o tictactoe
+	gcc tic-tac-toe.c -o tic-tac-toe

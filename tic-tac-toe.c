@@ -9,9 +9,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void checkForWin(char player1, char player2, char grid[10]);
-void drawBoard(char grid[10]);
-void markBoard(char player1, char player2, char grid[10]);
+void check_for_win(char player1, char player2, char grid[10]);
+void draw_board(char grid[10]);
+void mark_board(char player1, char player2, char grid[10]);
 
 int main() {
 
@@ -20,19 +20,19 @@ int main() {
 
 	char grid[10] = {[1] = '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
-	drawBoard(grid);
+	draw_board(grid);
 	while (1) {
-		markBoard(player1, player2, grid);
+		mark_board(player1, player2, grid);
 		system("clear");
-		drawBoard(grid);
-		checkForWin(player1, player2, grid);
+		draw_board(grid);
+		check_for_win(player1, player2, grid);
 	}
 
 	return 0;
 }
 
 // Checks to see if a player has won or the game is a draw.
-void checkForWin(char player1, char player2, char grid[10]) {
+void check_for_win(char player1, char player2, char grid[10]) {
 	// Player 1 check.
 	if (grid[1] == player1 && grid[4] == player1 && grid[7] == player1) {
 		puts("Player 1 wins!");
@@ -91,14 +91,13 @@ void checkForWin(char player1, char player2, char grid[10]) {
 	if (grid[1] != '1' && grid[2] != '2' && grid[3] != '3' && grid[4] != '4' &&
 	grid[5] != '5' && grid[6] != '6' && grid[7] != '7' && grid[8] != '8' &&
 	grid[9] != '9') {
-	puts("It's a draw!");
-	exit(0);
+		puts("It's a draw!");
+		exit(0);
 	}
 }
 
 // Redraws the board for each player turn.
-void drawBoard(char grid[10]) {
-
+void draw_board(char grid[10]) {
 	printf("\n\tTic Tac Toe\n\nPlayer 1 (x)  -  Player 2 (o)\n\n");
 
 	for (int i = 1; i < 4; i++)
@@ -113,8 +112,7 @@ void drawBoard(char grid[10]) {
 }
 
 // Sets the char array with a selection and check for an invalid selection.
-void markBoard(char player1, char player2, char grid[10]) {
-
+void mark_board(char player1, char player2, char grid[10]) {
 	int player1Choice;
 	int player2Choice;
 
@@ -122,8 +120,8 @@ void markBoard(char player1, char player2, char grid[10]) {
 	printf("Player 1: ");
 	scanf("%d", &player1Choice);
 	if (player1Choice == 1 || player1Choice == 2 || player1Choice == 3 ||
-		player1Choice == 4 || player1Choice == 5 || player1Choice == 6 ||
-		player1Choice == 7 || player1Choice == 8 || player1Choice == 9) {
+	    player1Choice == 4 || player1Choice == 5 || player1Choice == 6 ||
+	    player1Choice == 7 || player1Choice == 8 || player1Choice == 9) {
 		grid[player1Choice] = player1;
 	} else {
 		puts("Not a valid option.");
@@ -134,9 +132,9 @@ void markBoard(char player1, char player2, char grid[10]) {
 	printf("Player 2: ");
 	scanf("%d", &player2Choice);
 	if (player2Choice == 1 || player2Choice == 2 || player2Choice == 3 ||
-	player2Choice == 4 || player2Choice == 5 || player2Choice == 6 ||
-	player2Choice == 7 || player2Choice == 8 || player2Choice == 9) {
-	    grid[player2Choice] = player2;
+	    player2Choice == 4 || player2Choice == 5 || player2Choice == 6 ||
+	    player2Choice == 7 || player2Choice == 8 || player2Choice == 9) {
+		grid[player2Choice] = player2;
 	} else {
 	    puts("Not a valid option.");
 	    getchar();
